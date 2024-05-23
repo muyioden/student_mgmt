@@ -14,7 +14,7 @@ from students.serializers import StudentSerializer
 
 
 @api_view(['GET', 'POST'])
-def Student_list(request):
+def student_list(request):
     """
     List all code students, or create a new Student.
     """
@@ -31,17 +31,17 @@ def Student_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['GET', 'PUT', 'DELETE'])
-def Student_detail(request, pk):
+def student_detail(request, pk):
     """
     Retrieve, update or delete a code Student.
     """
     try:
-        Student = Student.objects.get(pk=pk)
-    except Student.DoesNotExist:
+        student = Student.objects.get(pk=pk)
+    except student.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = StudentSerializer(Student)
+        serializer = StudentSerializer(student)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
@@ -52,5 +52,5 @@ def Student_detail(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        Student.delete()
+        student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

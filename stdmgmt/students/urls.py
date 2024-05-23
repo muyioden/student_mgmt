@@ -5,7 +5,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('', students_views.index.as_view(), name='home'),
-    path('api/students/', students_views.tutorial_list),
-    path('api/students/<int:pk>/', students_views.tutorial_detail),
-    path('api/students/published/', students_views.tutorial_list_published)
+    path('api/students/', students_views.student_list),
+    path('api/students/<int:pk>/', students_views.student_detail)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
