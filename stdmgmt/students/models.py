@@ -8,4 +8,4 @@ class Student(models.Model):
     lastname = models.CharField(max_length=20, null=False, blank=False)
     email = models.EmailField()
     student_id = models.CharField(max_length=10, default='999999')
-    courses = models.ManyToManyField(Course)
+    # courses = models.ManyToManyField(Course)
