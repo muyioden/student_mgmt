@@ -5,6 +5,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('api/courses/', courses_views.course_list),
-    path('api/courses/<int:pk>/', courses_views.tutorial_detail),
-    path('api/courses/published/', courses_views.tutorial_list_published)
+    path('api/courses/<int:pk>/', courses_views.course_detail)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
