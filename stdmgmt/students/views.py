@@ -25,8 +25,9 @@ def student_list(request):
 
     elif request.method == 'POST':
         serializer = StudentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.create()
+        if serializer.is_valid():            
+            validated_data = serializer.validated_data
+            serializer.create(validated_data)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
